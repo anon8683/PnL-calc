@@ -1,0 +1,45 @@
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0px;
+}
+
+.leverage,
+.slidecontainer {
+  justify-content: center;
+  display: flex;
+  gap: 5px;
+  padding: 6px;
+}
+
+.slidecontainer {
+}
+
+#qty {
+  height: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+.inputs {
+  height: 100px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
