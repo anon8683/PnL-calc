@@ -7,6 +7,8 @@ const close = document.querySelector("#close");
 const profitLoss = document.querySelector("#profit");
 const profitP = document.querySelector("#profitP");
 const roi = document.querySelector("#roi");
+const shortButton = document.querySelector(".short");
+const longButton = document.querySelector(".long");
 
 let leverage = 1;
 let quantity = 0;
@@ -14,6 +16,24 @@ let entryPrice = 0;
 let closePrice = 0;
 let iniMargin = 0;
 let realPnl = 0;
+
+let long = true;
+let short = false;
+
+longButton.addEventListener("click", (e) => {
+  longButton.classList.add("buttonBorder");
+  shortButton.classList.remove("buttonBorder");
+  long = true;
+  short = false;
+});
+
+shortButton.addEventListener("click", (e) => {
+  longButton.classList.remove("buttonBorder");
+  shortButton.classList.add("buttonBorder");
+
+  long = false;
+  short = true;
+});
 
 slider.addEventListener("input", (e) => {
   leverage = slider.value;
