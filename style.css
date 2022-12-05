@@ -128,14 +128,16 @@ button {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: rgb(202, 202, 202);
+  background-color: rgb(193, 191, 191);
   padding: 10px;
 }
 input {
   outline: none;
   transform: none;
+  padding: 2px;
 }
 
 button:focus {
   border: 1px solid orange;
+  padding: 0px;
 }

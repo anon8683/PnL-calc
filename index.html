@@ -51,40 +51,40 @@
             <button class="long">long</button>
             <button class="short">short</button>
           </div>
-          <input type="range" name="leverage" id="leverage" />
+          <input type="range" min="1" max="100" value="1" name="leverage" id="leverage" />
           <div class="leverage">
             <p>Leverage:</p>
-            <input type="text" class="lev" />
+            <input type="text" value="" min="1" max="" class="lev" />
           </div>
           <div class="quantity">
             <p>Quantity:</p>
-            <input type="text" />
+            <input type="text" id="qty" />
           </div>
           <div class="entry">
             <p>Entry Price:</p>
-            <input type="text" />
+            <input type="text" id="entry" />
           </div>
           <div class="close">
             <p>Close Price:</p>
-            <input type="text" />
+            <input type="text" id="close" />
           </div>
         </div>
         <div class="results">
           <div class="margin">
             <p>Intial Margin</p>
-            <p class="collateral">100</p>
+            <p class="collateral">0.00</p>
           </div>
           <div class="pnl">
             <p>Profit/Loss</p>
-            <p>0.0000</p>
+            <p id="profit">0.0000</p>
           </div>
             <div class="percent">
               <p>Profit/Loss%</p>
-              <p>0%</p>
+              <p id="profitP">0%</p>
             </div>
             <div class="roi">
                 <p>ROI</p>
-                <p>0%</p>
+                <p id="roi">0%</p>
             </div>
           </div>
         </div>
