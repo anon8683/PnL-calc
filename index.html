@@ -9,23 +9,25 @@
     <script src="javascript.js" defer></script>
   </head>
   <body>
-    <h1 class="btcprice">BTC: $</h1>
+    <!-- <h1 class="btcprice">BTC: $</h1>
     <section class="pnl">
       <h4>Profit & Loss</h4>
-      <section class="leverage">
-        <p>Leverage:</p>
-        <p class="levSlider">5</p>
+      <section class="lev">
+        <section class="leverage">
+          <p>Leverage:</p>
+          <p class="levSlider">5</p>
+        </section>
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="2"
+            max="100"
+            value="0"
+            class="slider"
+            id="myRange"
+          />
+        </div>
       </section>
-      <div class="slidecontainer">
-        <input
-          type="range"
-          min="2"
-          max="100"
-          value="16"
-          class="slider"
-          id="myRange"
-        />
-      </div>
       <section class="inputs">
         <div class="labels">
           <p>Quantity</p>
@@ -36,6 +38,57 @@
           <input type="text" /><input type="text" /><input type="text" />
         </div>
       </section>
-    </section>
+      <div class="margin">
+        <p>Initial Margin</p>
+        <p>0.00 USDT</p>
+      </div>
+    </section> -->
+    <h1 class="intro">Trading Calculator</h1>
+    <div class="flex-container">
+      <div class="grid-container">
+        <div class="inputs">
+          <div class="side">
+            <button class="long">long</button>
+            <button class="short">short</button>
+          </div>
+          <input type="range" name="leverage" id="leverage" />
+          <div class="leverage">
+            <p>Leverage:</p>
+            <input type="text" class="lev" />
+          </div>
+          <div class="quantity">
+            <p>Quantity:</p>
+            <input type="text" />
+          </div>
+          <div class="entry">
+            <p>Entry Price:</p>
+            <input type="text" />
+          </div>
+          <div class="close">
+            <p>Close Price:</p>
+            <input type="text" />
+          </div>
+        </div>
+        <div class="results">
+          <div class="margin">
+            <p>Intial Margin</p>
+            <p class="collateral">100</p>
+          </div>
+          <div class="pnl">
+            <p>Profit/Loss</p>
+            <p>0.0000</p>
+          </div>
+            <div class="percent">
+              <p>Profit/Loss%</p>
+              <p>0%</p>
+            </div>
+            <div class="roi">
+                <p>ROI</p>
+                <p>0%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
