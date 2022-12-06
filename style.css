@@ -76,6 +76,7 @@ body {
 .flex-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .grid-container {
@@ -171,4 +172,16 @@ button {
 }
 .loss {
   color: rgb(250, 130, 130);
+}
+
+@media only screen and (max-width: 1250px) {
+  body {
+    height: 90vh;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+    height: 80vh;
+    gap: 20px;
+    width: fit-content;
+  }
 }

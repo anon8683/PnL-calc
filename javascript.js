@@ -88,14 +88,15 @@ function pnl() {
   //Changes pnl formula based on side
   if (long === true) {
     realPnl = +(quantity * closePrice - quantity * entryPrice).toFixed(1);
+  } else {
+    // else if short is true
+    realPnl = +(quantity * entryPrice - quantity * closePrice).toFixed(1);
   }
-  // else if short is true
-  realPnl = +(quantity * entryPrice - quantity * closePrice).toFixed(1);
 
   //Calculates our pnl percents
   let orderValue = entryPrice * quantity;
-  let percent = (realPnl / orderValue) * 100;
-  let roiPerecent = (realPnl / iniMargin) * 100;
+  let percent = ((realPnl / orderValue) * 100).toFixed(2);
+  let roiPerecent = ((realPnl / iniMargin) * 100).toFixed(2);
 
   //Displays pnl
   profitLoss.textContent = `${realPnl} USDT`;
