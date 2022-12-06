@@ -74,6 +74,7 @@ entry.addEventListener("change", (e) => {
 closes.addEventListener("change", (e) => {
   closePrice = +closes.value;
   checkClose();
+  liqPrice();
 });
 
 function margin() {
@@ -122,6 +123,7 @@ function liqPrice() {
       liquidation.textContent = `${liq.toFixed(2)} USDT`;
     }
   }
+  return;
 }
 
 function checkClose() {
