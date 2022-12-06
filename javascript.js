@@ -10,6 +10,9 @@ const roi = document.querySelector("#roi");
 const shortButton = document.querySelector(".short");
 const longButton = document.querySelector(".long");
 const liquidation = document.querySelector("#liq");
+const intro = document.querySelector(".intro");
+const prices = Array.from(document.querySelectorAll(".price"));
+const ethPrice = document.querySelector(".ethPrice");
 
 let leverage = 0;
 let quantity = 0;
@@ -19,6 +22,7 @@ let iniMargin = 0;
 let realPnl = 0;
 let liq = 0;
 let orderValue = 0;
+let price = 0;
 
 let long = true;
 let short = false;
@@ -79,18 +83,22 @@ closes.addEventListener("change", (e) => {
 
 function margin() {
   iniMargin = +((quantity * entryPrice) / leverage).toFixed(2);
-  collateral.textContent = `${((quantity * entryPrice) / leverage).toFixed(
-    1
+  collateral.textContent = `${numberWithCommas(
+    ((quantity * entryPrice) / leverage).toFixed(1)
   )} USDT`;
 }
 
 function pnl() {
   //Changes pnl formula based on side
   if (long === true) {
-    realPnl = +(quantity * closePrice - quantity * entryPrice).toFixed(1);
+    realPnl = numberWithCommas(
+      +(quantity * closePrice - quantity * entryPrice).toFixed(1)
+    );
   } else {
     // else if short is true
-    realPnl = +(quantity * entryPrice - quantity * closePrice).toFixed(1);
+    realPnl = numberWithCommas(
+      +(quantity * entryPrice - quantity * closePrice).toFixed(1)
+    );
   }
 
   //Calculates our pnl percents
@@ -113,11 +121,11 @@ function liqPrice() {
 
     if (long === true) {
       //   liq = liq + (iniMargin / 100) * 5;
-      liq = (orderValue - iniMargin) / quantity;
-      liquidation.textContent = `${liq.toFixed(2)} USDT`;
+      liq = numberWithCommas((orderValue - iniMargin) / quantity);
+      liquidation.textContent = `${liq} USDT`;
     } else {
-      liq = (orderValue + iniMargin) / quantity;
-      liquidation.textContent = `${liq.toFixed(2)} USDT`;
+      liq = numberWithCommas((orderValue + iniMargin) / quantity);
+      liquidation.textContent = `${liq} USDT`;
     }
   }
   return;
@@ -153,4 +161,37 @@ function checkColor() {
     profitP.classList.add("loss");
     roi.classList.add("loss");
   }
+}
+
+function fetchData() {
+  fetch("https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT")
+    .then((response) => response.json())
+    .then((data) => {
+      price = Math.round(+data.price * 10) / 10;
+      //   prices.textContent = `$${numberWithCommas(price)}`;
+
+      prices.forEach((el) => {
+        el.textContent = `$${numberWithCommas(price)}`;
+      });
+    });
+
+  fetch("https://api.binance.com/api/v3/avgPrice?symbol=ETHUSDT")
+    .then((response) => response.json())
+    .then((data) => {
+      ethPrice.textContent = `$${numberWithCommas(
+        Math.round(+data.price * 10) / 10
+      )}`;
+    });
+}
+
+//Call fetch every 5 seconds after window loads
+window.addEventListener("load", (e) => {
+  fetchData();
+  const fetchInterval = 5000;
+  setInterval(fetchData, fetchInterval);
+});
+
+// Give numbers commas
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
