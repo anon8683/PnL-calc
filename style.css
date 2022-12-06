@@ -64,7 +64,7 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: rgb(71, 68, 68);
+  background-color: rgb(34, 33, 33);
   font-family: "Kanit", sans-serif;
   color: antiquewhite;
 }
@@ -130,6 +130,7 @@ input:focus {
 
 button {
   width: 170px;
+  height: 25px;
   border: 0;
   border-radius: 5px;
   margin: 2px;
@@ -163,4 +164,11 @@ button {
 .long,
 .short {
   background-color: rgb(97, 95, 95);
+}
+
+.profit {
+  color: rgb(63, 232, 63);
+}
+.loss {
+  color: rgb(250, 130, 130);
 }
