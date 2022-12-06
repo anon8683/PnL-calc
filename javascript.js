@@ -85,28 +85,24 @@ function margin() {
 }
 
 function pnl() {
+  //Changes pnl formula based on side
   if (long === true) {
     realPnl = +(quantity * closePrice - quantity * entryPrice).toFixed(1);
-    profitLoss.textContent = `${realPnl} USDT`;
-    profitP.textContent = `${((realPnl / entryPrice) * 100).toFixed(2)}%`;
-    roi.textContent = `${((realPnl / iniMargin) * 100).toFixed(2)}%`;
-    liquidation.textContent = `${(
-      quantity * entryPrice -
-      iniMargin +
-      (iniMargin / 100) * 1.6667
-    ).toFixed(2)} USDT`;
-    checkColor();
-
-    return;
   }
-
+  // else if short is true
   realPnl = +(quantity * entryPrice - quantity * closePrice).toFixed(1);
-  profitLoss.textContent = `${realPnl} USDT`;
-  profitP.textContent = `${((realPnl / entryPrice) * 100).toFixed(2)}%`;
-  roi.textContent = `${((realPnl / iniMargin) * 100).toFixed(2)}%`;
-  checkColor();
 
-  return;
+  //Calculates our pnl percents
+  let orderValue = entryPrice * quantity;
+  let percent = (realPnl / orderValue) * 100;
+  let roiPerecent = (realPnl / iniMargin) * 100;
+
+  //Displays pnl
+  profitLoss.textContent = `${realPnl} USDT`;
+  profitP.textContent = `${percent} %`;
+  roi.textContent = `${roiPerecent}%`;
+  // Adds/removes CSS color class to our text
+  checkColor();
 }
 
 //Calcs our liquidation price based on leverage,quantity,entry price
